@@ -1,12 +1,15 @@
-import { useDispatch, useSelector } from "react-redux"
-import { decrement, increment } from "./redux/features/counterSlice";
+import { decrement, increment, incrementByValue } from "./redux/features/counterSlice";
+import { useAppDispatch, useAppSelector } from "./redux/hook";
 
 function App() {
-  const count = useSelector((state ) => state.counter.count)
-  const dispatch = useDispatch();
+  const count = useAppSelector((state ) => state.counter.count)
+  const dispatch = useAppDispatch();
   return (
     <div className="min-h-screen w-full flex justify-center items-center">
      <div className="border bg-green-50 rounded-lg p-10 flex gap-6">
+      <button className="text-xl py-2 px-4 bg-green-500 hover:bg-green-700 text-white rounded-md"
+      onClick={() => dispatch(incrementByValue(5))}
+      >Increase 5</button>
       <button className="text-xl py-2 px-4 bg-green-500 hover:bg-green-700 text-white rounded-md"
       onClick={() => dispatch(increment())}
       >Increment</button>
